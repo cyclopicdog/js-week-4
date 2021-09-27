@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <title>Rich people rich things</title>
+    </head>
+
+    <body>
+        <main class="richpeeps">
+            <h1 class="richpeeps__heading">We all be some rich ass folk!</h1>
+            <label for="findRichy">Find somebody on the rich-list:</label>
+            <input
+                type="text"
+                name="findRichy"
+                id="findRichy"
+                class="richpeeps__find"
+            />
+
+            <div class="richpeeps__checkboxes">
+                <label for="netW">Show networth:</label>
+                <input type="checkbox" name="netW" value="0" id="netW" />
+                <label for="country">Show country:</label>
+                <input type="checkbox" name="country" value="0" id="country" />
+                <label for="source">Show source of income:</label>
+                <input type="checkbox" name="source" value="0" id="source" />
+                <label for="age">Show age:</label>
+                <input type="checkbox" name="age" value="0" id="age" />
+                <label for="marital-status">Show marital status:</label>
+                <input
+                    type="checkbox"
+                    name="marital-status"
+                    value="0"
+                    id="mStatus"
+                />
+            </div>
+
+            <ol class="richpeeps__list"></ol>
+        </main>
+        <script src="/js/script.js" lang="utf-8"></script>
+    </body>
+</html>

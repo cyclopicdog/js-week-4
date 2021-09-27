@@ -1,0 +1,5 @@
+This is a codingbootcamp specific configuration. There are multiple varieties available.
+
+For this:
+
+- anything that you want to compile needs to be added to the gulp-assets.js file

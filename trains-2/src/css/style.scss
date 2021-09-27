@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.trains {
+    width: 90vw;
+    &__timetable {
+        border: 1px black solid;
+    }
+    &__column {
+        background-color: yellow;
+    }
+    &__table-body {
+        text-align: right;
+        font-weight: bold;
+        & > tr {
+            &--delayed {
+                background-color: blue;
+            }
+            &:nth-child(odd) {
+                background-color: rgba($color: red, $alpha: 0.5);
+                color: white;
+            }
+            & > td {
+                padding: 0 10px;
+            }
+        }
+        &__btn {
+            width: fit-content;
+        }
+    }
+    &__delay-length {
+        display: none;
+    }
+    &__status--delayed {
+        background-color: rgba($color: red, $alpha: 0.5);
+    }
+}
