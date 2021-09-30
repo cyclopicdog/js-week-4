@@ -191,66 +191,87 @@ const conversation = [
     },
 ];
 
-let chatMsgs = document.querySelector('.chat');
-const uniChat = document.querySelector('.chat__container--unicorn');
-const botChat = document.querySelector('.chat__container--bot');
+// import Conversation from './Conversation';
+// import Message from './Message';
 
-// for (let i = 0; i < conversation.length; i++) {
-//     const element = conversation[i];
-//   if (element['name'] === 'Cleverbot') {
-//         chatMsgs.innerHTML += `<div class="chat__container chat__container--bot">
-//                 <img src="/img/Cleverbot.png" alt="unicorn" class="chat__user-pic">
-//                 <div class="chat__text chat__text--bot"> ${element['text']}</div>
-//               </div>`;
-//   } else {
+// messages.forEach((element) => {
+//     const message = new Message(element.side, element.name, element.text);
+//     convo.add(message);
+// });
 
-//         chatMsgs.innerHTML += `<div class="chat__container chat__container--unicorn">
-//                     <img src="/img/unicorn.png" alt="unicorn" class="chat__user-pic">
-//                     <div class="chat__text chat__text--unicorn"> ${element['text']}</div>
+// let chatMsgs = document.querySelector('.chat');
+// const uniChat = document.querySelector('.chat__container--unicorn');
+// const botChat = document.querySelector('.chat__container--bot');
+
+// const showMsg = (name, img, message) => {
+//     chatMsgs.innerHTML += `<div class="chat__container chat__container--${name}">
+//                     ${img}
+//                     <div class="chat__text chat__text--${name}"> ${message}</div>
 //                   </div>`;
-//     }
-// }
+// };
 
-const showMsg = (name, img, message) => {
-    chatMsgs.innerHTML += `<div class="chat__container chat__container--${name}">
-                    ${img}
-                    <div class="chat__text chat__text--${name}"> ${message}</div>
-                  </div>`;
-};
-
-// for (let i = 0; i < conversation.length; i++) {
-//     const element = conversation[i];
+// conversation.forEach((element, index) => {
 //     if (element['name'] === 'Cleverbot') {
 //         const name = 'bot';
 //         const img =
 //             '<img src="/img/Cleverbot.png" alt="bot" class="chat__user-pic">';
 //         const message = element['text'];
-//         setTimeout(showMsg(name, img, element, message), 3000);
-//         // showMsg(name, img, element, message);
+//         showMsg(name, img, element, message);
 //     } else {
 //         const name = 'unicorn';
 //         const img =
 //             '<img src="/img/unicorn.png" alt="unicorn" class="chat__user-pic">';
 //         const message = element['text'];
-//         setTimeout(showMsg(name, img, element, message), 3000);
-
-//         //showMsg(name, img, element, message);
+//         showMsg(name, img, message);
 //     }
-// }
+// });
 
-conversation.forEach((element, index) => {
-    if (element['name'] === 'Cleverbot') {
-        const name = 'bot';
-        const img =
-            '<img src="/img/Cleverbot.png" alt="bot" class="chat__user-pic">';
-        const message = element['text'];
-        setTimeout(showMsg(name, img, message), 3000);
-        // showMsg(name, img, element, message);
-    } else {
-        const name = 'unicorn';
-        const img =
-            '<img src="/img/unicorn.png" alt="unicorn" class="chat__user-pic">';
-        const message = element['text'];
-        setTimeout(showMsg(name, img, message), 3000);
+class Message {
+    constructor(side, name, text) {
+        this.side = side;
+        this.name = name;
+        this.text = text;
     }
-});
+
+    addImg() {
+        if (this['name'] === 'Cleverbot') {
+            this.img =
+                '<img src="/img/Cleverbot.png" alt="bot" class="chat__user-pic">';
+        } else {
+            this.img =
+                '<img src="/img/unicorn.png" alt="unicorn" class="chat__user-pic">';
+        }
+    }
+}
+
+class Conversation {
+    constructor(container_element, message) {
+        // element that the messages will be rendered in
+        this.container_element = container_element;
+        this.message = message;
+    }
+
+    showMsg() {
+        let name = this.message[name];
+        let img = this.message[img];
+        let msg = this.message[text];
+        this.container_element.innerHTML += `<div class="chat__container chat__container--${name}">
+            ${img}
+            <div class="chat__text chat__text--${name}"> ${msg}</div>
+            </div>`;
+    }
+}
+
+for (let i = 0; i < conversation.length; i++) {
+    let msg = new Message(
+        conversation[i]['side'],
+        conversation[i]['name'],
+        conversation[i]['text']
+    );
+    msg.addImg();
+    console.log(msg);
+    convo.showMsg();
+}
+
+const convo = new Conversation(conversation_container);
+const conversation_container = document.querySelector('.chat');
